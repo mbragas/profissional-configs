@@ -13,7 +13,8 @@ eureka:
 zuul:
    routes:
       oauth: /api/**
-      order: /api/**
+      orders: /api/**
+
 endpoints:
    routes:
       sensitive: false
