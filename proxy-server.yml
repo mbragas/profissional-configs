@@ -1,23 +1,19 @@
 server:
-  port: 8080
+   port: 8080
 
 eureka:
-  instance:
-    hostname: localhost
-    port: 9091
-  client:
-    registerWithEureka: true
-    fetchRegistry: false
-    serviceUrl:
-      defaultZone: http://${eureka.instance.hostname}:${eureka.instance.port}/eureka/
-  server:
-    wait-time-in-ms-when-sync-empty: 3000
+   instance:
+      hostname: localhost
+      port: 9091
+   client:
+      registerWithEureka: true
+      serviceUrl:
+         defaultZone: ${DISCOVERY_URL:http://${eureka.instance.hostname}:${eureka.instance.port}}/eureka/
 
 zuul:
    routes:
       oauth: /api/**
       order: /api/**
-      
 endpoints:
    routes:
       sensitive: false
