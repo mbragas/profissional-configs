@@ -1,6 +1,26 @@
 server:
    port: 8080
-
+   
+#   cloud:
+zuul:
+   sensitiveHeaders: Cookie,Set-Cookie
+#      config:
+#         uri: http://localhost:9090
+   routes:
+      oauth:
+         path: /oauth/**
+         url: http://localhost:9092/oauth
+      orders:
+         path: /orders/**
+         url: http://localhost:9093/orders
+      executionItems:
+         path: /executionItems/**
+         url: http://localhost:9094/executionItems
+endpoints:
+   routes:
+      sensitive: false
+   trace:
+      sensitive: false
 eureka:
    instance:
       hostname: localhost
@@ -9,14 +29,6 @@ eureka:
       registerWithEureka: true
       serviceUrl:
          defaultZone: ${DISCOVERY_URL:http://${eureka.instance.hostname}:${eureka.instance.port}}/eureka/
-
-zuul:
-   routes:
-      oauth: /api/**
-      orders: /api/**
-
-endpoints:
-   routes:
-      sensitive: false
-   trace:
-      sensitive: false
+logging:
+   level:
+      ROOT: DEBUG
