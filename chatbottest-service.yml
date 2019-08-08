@@ -1,5 +1,5 @@
 server:
-   port: 9093
+   port: 9094
 eureka:
    instance:
       hostname: localhost
@@ -30,4 +30,4 @@ security:
    oauth2:
       resource:
          userInfoUri: ${authserver.hostname}/user
-         id: schedulers
+         id: tests
